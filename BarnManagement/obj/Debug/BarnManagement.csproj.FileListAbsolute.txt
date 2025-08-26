@@ -1,0 +1,17 @@
+C:\Users\beyzy\source\repos\BarnManagement\BarnManagement\bin\Debug\BarnManagement.exe.config
+C:\Users\beyzy\source\repos\BarnManagement\BarnManagement\bin\Debug\BarnManagement.exe
+C:\Users\beyzy\source\repos\BarnManagement\BarnManagement\bin\Debug\BarnManagement.pdb
+C:\Users\beyzy\source\repos\BarnManagement\BarnManagement\bin\Debug\EntityFramework.dll
+C:\Users\beyzy\source\repos\BarnManagement\BarnManagement\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\beyzy\source\repos\BarnManagement\BarnManagement\bin\Debug\EntityFramework.xml
+C:\Users\beyzy\source\repos\BarnManagement\BarnManagement\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\beyzy\source\repos\BarnManagement\BarnManagement\obj\Debug\BarnManagement.csproj.AssemblyReference.cache
+C:\Users\beyzy\source\repos\BarnManagement\BarnManagement\obj\Debug\BarnManagement.Properties.Resources.resources
+C:\Users\beyzy\source\repos\BarnManagement\BarnManagement\obj\Debug\BarnManagement.csproj.GenerateResource.cache
+C:\Users\beyzy\source\repos\BarnManagement\BarnManagement\obj\Debug\BarnManagement.csproj.CoreCompileInputs.cache
+C:\Users\beyzy\source\repos\BarnManagement\BarnManagement\obj\Debug\BarnMana.F35FF659.Up2Date
+C:\Users\beyzy\source\repos\BarnManagement\BarnManagement\obj\Debug\BarnManagement.exe
+C:\Users\beyzy\source\repos\BarnManagement\BarnManagement\obj\Debug\BarnManagement.pdb
+C:\Users\beyzy\source\repos\BarnManagement\BarnManagement\obj\Debug\BarnManagement.Migrations.InitialCreate.resources
+C:\Users\beyzy\source\repos\BarnManagement\BarnManagement\obj\Debug\BarnManagement.Forms.LoginForm.resources
+C:\Users\beyzy\source\repos\BarnManagement\BarnManagement\obj\Debug\BarnManagement.Forms.RegisterForm.resources
