@@ -45,9 +45,9 @@
             this.btnSell = new System.Windows.Forms.Button();
             this.nudPrice = new System.Windows.Forms.NumericUpDown();
             this.Hayvan = new System.Windows.Forms.GroupBox();
-            this.nudAnimalPrice = new System.Windows.Forms.NumericUpDown();
-            this.cboSellAnimal = new System.Windows.Forms.ComboBox();
             this.btnSellAnimal = new System.Windows.Forms.Button();
+            this.cboSellAnimal = new System.Windows.Forms.ComboBox();
+            this.nudAnimalPrice = new System.Windows.Forms.NumericUpDown();
             ((System.ComponentModel.ISupportInitialize)(this.dgvAnimals)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvProducts)).BeginInit();
             this.GroupBox.SuspendLayout();
@@ -209,6 +209,23 @@
             this.Hayvan.TabIndex = 5;
             this.Hayvan.TabStop = false;
             // 
+            // btnSellAnimal
+            // 
+            this.btnSellAnimal.Location = new System.Drawing.Point(6, 72);
+            this.btnSellAnimal.Name = "btnSellAnimal";
+            this.btnSellAnimal.Size = new System.Drawing.Size(75, 23);
+            this.btnSellAnimal.TabIndex = 2;
+            this.btnSellAnimal.Text = "Hayvanı Sat";
+            this.btnSellAnimal.UseVisualStyleBackColor = true;
+            // 
+            // cboSellAnimal
+            // 
+            this.cboSellAnimal.FormattingEnabled = true;
+            this.cboSellAnimal.Location = new System.Drawing.Point(6, 19);
+            this.cboSellAnimal.Name = "cboSellAnimal";
+            this.cboSellAnimal.Size = new System.Drawing.Size(121, 21);
+            this.cboSellAnimal.TabIndex = 1;
+            // 
             // nudAnimalPrice
             // 
             this.nudAnimalPrice.DecimalPlaces = 2;
@@ -221,24 +238,6 @@
             this.nudAnimalPrice.Name = "nudAnimalPrice";
             this.nudAnimalPrice.Size = new System.Drawing.Size(120, 20);
             this.nudAnimalPrice.TabIndex = 0;
-            // 
-            // cboSellAnimal
-            // 
-            this.cboSellAnimal.FormattingEnabled = true;
-            this.cboSellAnimal.Location = new System.Drawing.Point(6, 19);
-            this.cboSellAnimal.Name = "cboSellAnimal";
-            this.cboSellAnimal.Size = new System.Drawing.Size(121, 21);
-            this.cboSellAnimal.TabIndex = 1;
-            //this.cboSellAnimal.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
-            // 
-            // btnSellAnimal
-            // 
-            this.btnSellAnimal.Location = new System.Drawing.Point(6, 72);
-            this.btnSellAnimal.Name = "btnSellAnimal";
-            this.btnSellAnimal.Size = new System.Drawing.Size(75, 23);
-            this.btnSellAnimal.TabIndex = 2;
-            this.btnSellAnimal.Text = "Hayvanı Sat";
-            this.btnSellAnimal.UseVisualStyleBackColor = true;
             // 
             // MainForm
             // 
@@ -253,6 +252,7 @@
             this.Controls.Add(this.dgvAnimals);
             this.Name = "MainForm";
             this.Text = "MainForm";
+            this.Load += new System.EventHandler(this.MainForm_Load_1);
             ((System.ComponentModel.ISupportInitialize)(this.dgvAnimals)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvProducts)).EndInit();
             this.GroupBox.ResumeLayout(false);

@@ -1,14 +1,14 @@
 ﻿using System;
 using System.Linq;
 using System.Windows.Forms;
-using BarnManagement.Data;    // BarnContext bu namespacete ise bırak; değilse kaldır
-using BarnManagement.Models;  // Modeller
+using BarnManagement.Data;    
+using BarnManagement.Models;  
 
 namespace BarnManagement.Forms
 {
     public partial class MainForm : Form
     {
-        private const decimal START_BALANCE = 1000m; // başlangıç bakiyesi
+        private const decimal START_BALANCE = 1000m; 
         private readonly int _progressStep = 5;
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -17,28 +17,28 @@ namespace BarnManagement.Forms
         private void dgyProducts_CellContentClick(object sender, DataGridViewCellEventArgs e)
             => DgvProducts_CellContentClick(sender, e);
 
-        private void lbBalance_Click(object sender, EventArgs e) { /* no-op */ }
+        private void lbBalance_Click(object sender, EventArgs e) {  }
 
-        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e) { /* no-op */ }
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e) {  }
 
 
         public MainForm()
         {
             InitializeComponent();
 
-            // Event bağları
+            
             this.Load += MainForm_Load;
             btnAddAnimal.Click += BtnAddAnimal_Click;
             btnProduce.Click += BtnProduce_Click;
             timerProduction.Tick += TimerProduction_Tick;
-            btnSell.Click += BtnSell_Click;               // ÜRÜN satışı
-            btnSellAnimal.Click += BtnSellAnimal_Click;   // HAYVAN satışı (yeni)
+            btnSell.Click += BtnSell_Click;               
+            btnSellAnimal.Click += BtnSellAnimal_Click;   
         }
 
-        // ---------- FORM LOAD ----------
+        
         private void MainForm_Load(object sender, EventArgs e)
         {
-            // Enums sınıfını kullandığın için:
+            
             cboSpecies.DataSource = Enum.GetValues(typeof(Enums.Species));
             cboGender.DataSource = Enum.GetValues(typeof(Enums.Gender));
 
@@ -47,11 +47,11 @@ namespace BarnManagement.Forms
 
             EnsureBarnExists();
             LoadAnimals();
-            LoadAnimalsForSale();   // yeni: satış kombosu
+            LoadAnimalsForSale();   
             LoadProducts();
             LoadBalance();
 
-            // Grid ayarları
+            
             dgvProducts.AutoGenerateColumns = true;
             dgvAnimals.AutoGenerateColumns = true;
             dgvProducts.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
@@ -60,7 +60,7 @@ namespace BarnManagement.Forms
             dgvAnimals.MultiSelect = false;
         }
 
-        // ---------- DB HELPERS ----------
+        
         private void EnsureBarnExists()
         {
             using (var db = new BarnContext())
@@ -78,7 +78,7 @@ namespace BarnManagement.Forms
             using (var db = new BarnContext())
             {
                 var data = db.Animals
-                    .Where(a => a.IsAlive) // sadece canlı/satılmamış hayvanlar listelensin
+                    .Where(a => a.IsAlive) 
                     .Select(a => new
                     {
                         a.Id,
@@ -91,7 +91,7 @@ namespace BarnManagement.Forms
 
                 dgvAnimals.DataSource = data;
 
-                // Ahır canlı hayvan sayısını güncelle
+                
                 var barn = db.Barns.FirstOrDefault();
                 if (barn != null)
                 {
@@ -144,7 +144,7 @@ namespace BarnManagement.Forms
             }
         }
 
-        // ---------- FİYAT YARDIMCILARI ----------
+        
         private decimal GetBuyPrice(Enums.Species species)
         {
             switch (species)
@@ -156,7 +156,7 @@ namespace BarnManagement.Forms
             }
         }
 
-        // ---------- HAYVAN EKLE (ALIŞ) ----------
+        
         private void BtnAddAnimal_Click(object sender, EventArgs e)
         {
             var species = (Enums.Species)cboSpecies.SelectedItem;
@@ -184,14 +184,14 @@ namespace BarnManagement.Forms
                     return;
                 }
 
-                // Kapasite kontrolü (opsiyonel)
+                
                 if (barn.CurrentAnimalCount >= barn.Capacity)
                 {
                     MessageBox.Show("Ahır kapasitesi dolu.");
                     return;
                 }
 
-                barn.Balance -= cost;   // alış maliyetini düş
+                barn.Balance -= cost;   
                 db.Animals.Add(a);
                 db.SaveChanges();
             }
@@ -203,7 +203,7 @@ namespace BarnManagement.Forms
             MessageBox.Show("Hayvan eklendi (bakiye güncellendi).");
         }
 
-        // ---------- ÜRETİM ----------
+        
         private void BtnProduce_Click(object sender, EventArgs e)
         {
             if (timerProduction.Enabled) return;
@@ -251,10 +251,10 @@ namespace BarnManagement.Forms
             LoadAnimals();
             LoadAnimalsForSale();
             LoadProducts();
-            // MessageBox.Show($"Üretilen ürün adedi: {created}");
+            
         }
 
-        // ---------- ÜRÜN SATIŞI ----------
+       
         private void BtnSell_Click(object sender, EventArgs e)
         {
             if (dgvProducts.CurrentRow == null)
@@ -278,7 +278,7 @@ namespace BarnManagement.Forms
                 if (p.IsSold) { MessageBox.Show("Bu ürün zaten satılmış."); return; }
 
                 var barn = db.Barns.First();
-                barn.Balance += unitPrice * p.Quantity; // ürün geliri
+                barn.Balance += unitPrice * p.Quantity; 
                 p.IsSold = true;
 
                 db.SaveChanges();
@@ -289,7 +289,7 @@ namespace BarnManagement.Forms
             MessageBox.Show("Ürün satışı gerçekleştirildi.");
         }
 
-        // ---------- HAYVAN SATIŞI (YENİ) ----------
+        
         private void BtnSellAnimal_Click(object sender, EventArgs e)
         {
             if (cboSellAnimal.SelectedValue == null)
@@ -312,8 +312,8 @@ namespace BarnManagement.Forms
                 if (a == null) { MessageBox.Show("Hayvan bulunamadı veya zaten satılmış/ölü."); return; }
 
                 var barn = db.Barns.First();
-                barn.Balance += price;   // hayvan satışı geliri
-                a.IsAlive = false;       // satıldı/çıktı → artık listelenmesin
+                barn.Balance += price;   
+                a.IsAlive = false;       
 
                 db.SaveChanges();
             }
@@ -324,19 +324,23 @@ namespace BarnManagement.Forms
             MessageBox.Show("Hayvan satışı gerçekleştirildi.");
         }
 
-        // DataGridView1 – CellContentClick
+        
         private void DataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             if (sender is DataGridView grid && e.RowIndex >= 0)
                 grid.Rows[e.RowIndex].Selected = true;
         }
 
-        // DgvProducts – CellContentClick
+      
         private void DgvProducts_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex >= 0)
                 dgvProducts.Rows[e.RowIndex].Selected = true;
         }
 
+        private void MainForm_Load_1(object sender, EventArgs e)
+        {
+
+        }
     }
 }

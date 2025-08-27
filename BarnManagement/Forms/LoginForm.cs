@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Linq;
 using System.Windows.Forms;
-using BarnManagement.Data;        // BarnContext bu namespace'teyse doğru
-using BarnManagement.Models;      // User
-using BarnManagement.Security;    // PasswordHelper
+using BarnManagement.Data;        
+using BarnManagement.Models;      
+using BarnManagement.Security;    
 
 namespace BarnManagement.Forms
 {
@@ -13,7 +13,7 @@ namespace BarnManagement.Forms
         {
             InitializeComponent();
 
-            // Event bağları
+            
             btnLogin.Click += BtnLogin_Click;
             btnGoRegister.Click += (s, e) =>
             {
@@ -21,11 +21,11 @@ namespace BarnManagement.Forms
                 this.Hide();
             };
 
-            // Enter ile login
+            
             this.AcceptButton = btnLogin;
         }
 
-        // Designer bağladıysa dursun; kullanmıyoruz.
+        
         private void LoginForm_Load(object sender, EventArgs e) { }
 
         private void BtnLogin_Click(object sender, EventArgs e)
@@ -58,9 +58,9 @@ namespace BarnManagement.Forms
                     }
                 }
 
-                // Başarılı giriş → MainForm'a geç
+                
                 var main = new MainForm();
-                main.FormClosed += (s, e2) => this.Close(); // Main kapanınca uygulama kapansın
+                main.FormClosed += (s, e2) => this.Close(); 
                 main.Show();
                 this.Hide();
             }
@@ -70,7 +70,7 @@ namespace BarnManagement.Forms
             }
             finally
             {
-                // güvenlik için şifre kutusunu temizle
+                
                 txtPassword.Text = string.Empty;
             }
         }
