@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Linq;
 using System.Windows.Forms;
-using BarnManagement.Data;
-using BarnManagement.Models;      // BarnContext, User
+using BarnManagement.Data;        // BarnContext bu namespace'teyse doğru
+using BarnManagement.Models;      // User
 using BarnManagement.Security;    // PasswordHelper
 
 namespace BarnManagement.Forms
@@ -12,12 +12,21 @@ namespace BarnManagement.Forms
         public LoginForm()
         {
             InitializeComponent();
+
+            // Event bağları
             btnLogin.Click += BtnLogin_Click;
-            btnGoRegister.Click += (s, e) => { new RegisterForm().Show(); this.Hide(); };
+            btnGoRegister.Click += (s, e) =>
+            {
+                new RegisterForm().Show();
+                this.Hide();
+            };
+
+            // Enter ile login
+            this.AcceptButton = btnLogin;
         }
 
+        // Designer bağladıysa dursun; kullanmıyoruz.
         private void LoginForm_Load(object sender, EventArgs e) { }
-
 
         private void BtnLogin_Click(object sender, EventArgs e)
         {
@@ -26,29 +35,43 @@ namespace BarnManagement.Forms
 
             if (string.IsNullOrWhiteSpace(username) || string.IsNullOrWhiteSpace(pass))
             {
-                MessageBox.Show("Kullanıcı adı ve şifre gerekli"); return;
+                MessageBox.Show("Kullanıcı adı ve şifre gerekli");
+                return;
             }
 
-            using (var db = new BarnContext())
+            try
             {
-                var user = db.Users.FirstOrDefault(u => u.Username == username);
-                if (user == null)
+                using (var db = new BarnContext())
                 {
-                    MessageBox.Show("Kullanıcı bulunamadı"); return;
+                    var user = db.Users.FirstOrDefault(u => u.Username == username);
+                    if (user == null)
+                    {
+                        MessageBox.Show("Kullanıcı bulunamadı");
+                        return;
+                    }
+
+                    bool ok = PasswordHelper.Verify(pass, user.PasswordHash, user.PasswordSalt);
+                    if (!ok)
+                    {
+                        MessageBox.Show("Şifre hatalı");
+                        return;
+                    }
                 }
 
-                bool ok = PasswordHelper.Verify(pass, user.PasswordHash, user.PasswordSalt);
-                if (!ok)
-                {
-                    MessageBox.Show("Şifre hatalı"); return;
-                }
-
-                // Başarılı giriş
-                MessageBox.Show("Giriş başarılı!");
-
-                // MainForm hazır olduğunda:
-                // new MainForm(user).Show();
-                // this.Hide();
+                // Başarılı giriş → MainForm'a geç
+                var main = new MainForm();
+                main.FormClosed += (s, e2) => this.Close(); // Main kapanınca uygulama kapansın
+                main.Show();
+                this.Hide();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Giriş sırasında hata: " + ex.Message);
+            }
+            finally
+            {
+                // güvenlik için şifre kutusunu temizle
+                txtPassword.Text = string.Empty;
             }
         }
     }

@@ -15,3 +15,5 @@ C:\Users\beyzy\source\repos\BarnManagement\BarnManagement\obj\Debug\BarnManageme
 C:\Users\beyzy\source\repos\BarnManagement\BarnManagement\obj\Debug\BarnManagement.Migrations.InitialCreate.resources
 C:\Users\beyzy\source\repos\BarnManagement\BarnManagement\obj\Debug\BarnManagement.Forms.LoginForm.resources
 C:\Users\beyzy\source\repos\BarnManagement\BarnManagement\obj\Debug\BarnManagement.Forms.RegisterForm.resources
+C:\Users\beyzy\source\repos\BarnManagement\BarnManagement\obj\Debug\BarnManagement.Forms.MainForm.resources
+C:\Users\beyzy\source\repos\BarnManagement\BarnManagement\obj\Debug\BarnManagement.Migrations.UseDateTime2_AndProductProducedAt.resources

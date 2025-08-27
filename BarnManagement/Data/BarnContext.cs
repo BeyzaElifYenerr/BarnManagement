@@ -26,6 +26,9 @@ namespace BarnManagement.Data
                 .Map<Chicken>(m => m.Requires("Discriminator").HasValue("Chicken"))
                 .Map<Sheep>(m => m.Requires("Discriminator").HasValue("Sheep"));
 
+            modelBuilder.Properties<DateTime>()
+                        .Configure(c => c.HasColumnType("datetime2"));
+
             base.OnModelCreating(modelBuilder);
         }
     }

@@ -3,8 +3,60 @@
   "WorkspaceRootPath": "C:\\Users\\beyzy\\source\\repos\\BarnManagement\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{BAF72060-6D54-4297-A54F-D9CE90DD38DA}|BarnManagement\\BarnManagement.csproj|c:\\users\\beyzy\\source\\repos\\barnmanagement\\barnmanagement\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{BAF72060-6D54-4297-A54F-D9CE90DD38DA}|BarnManagement\\BarnManagement.csproj|solutionrelative:barnmanagement\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+      "AbsoluteMoniker": "D:0:0:{BAF72060-6D54-4297-A54F-D9CE90DD38DA}|BarnManagement\\BarnManagement.csproj|c:\\users\\beyzy\\source\\repos\\barnmanagement\\barnmanagement\\forms\\mainform.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BAF72060-6D54-4297-A54F-D9CE90DD38DA}|BarnManagement\\BarnManagement.csproj|solutionrelative:barnmanagement\\forms\\mainform.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BAF72060-6D54-4297-A54F-D9CE90DD38DA}|BarnManagement\\BarnManagement.csproj|c:\\users\\beyzy\\source\\repos\\barnmanagement\\barnmanagement\\forms\\mainform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{BAF72060-6D54-4297-A54F-D9CE90DD38DA}|BarnManagement\\BarnManagement.csproj|solutionrelative:barnmanagement\\forms\\mainform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BAF72060-6D54-4297-A54F-D9CE90DD38DA}|BarnManagement\\BarnManagement.csproj|c:\\users\\beyzy\\source\\repos\\barnmanagement\\barnmanagement\\forms\\mainform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BAF72060-6D54-4297-A54F-D9CE90DD38DA}|BarnManagement\\BarnManagement.csproj|solutionrelative:barnmanagement\\forms\\mainform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BAF72060-6D54-4297-A54F-D9CE90DD38DA}|BarnManagement\\BarnManagement.csproj|c:\\users\\beyzy\\source\\repos\\barnmanagement\\barnmanagement\\data\\barncontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BAF72060-6D54-4297-A54F-D9CE90DD38DA}|BarnManagement\\BarnManagement.csproj|solutionrelative:barnmanagement\\data\\barncontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BAF72060-6D54-4297-A54F-D9CE90DD38DA}|BarnManagement\\BarnManagement.csproj|c:\\users\\beyzy\\source\\repos\\barnmanagement\\barnmanagement\\models\\sheep.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BAF72060-6D54-4297-A54F-D9CE90DD38DA}|BarnManagement\\BarnManagement.csproj|solutionrelative:barnmanagement\\models\\sheep.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BAF72060-6D54-4297-A54F-D9CE90DD38DA}|BarnManagement\\BarnManagement.csproj|c:\\users\\beyzy\\source\\repos\\barnmanagement\\barnmanagement\\models\\chicken.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BAF72060-6D54-4297-A54F-D9CE90DD38DA}|BarnManagement\\BarnManagement.csproj|solutionrelative:barnmanagement\\models\\chicken.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BAF72060-6D54-4297-A54F-D9CE90DD38DA}|BarnManagement\\BarnManagement.csproj|c:\\users\\beyzy\\source\\repos\\barnmanagement\\barnmanagement\\models\\cow.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BAF72060-6D54-4297-A54F-D9CE90DD38DA}|BarnManagement\\BarnManagement.csproj|solutionrelative:barnmanagement\\models\\cow.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BAF72060-6D54-4297-A54F-D9CE90DD38DA}|BarnManagement\\BarnManagement.csproj|c:\\users\\beyzy\\source\\repos\\barnmanagement\\barnmanagement\\models\\product.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BAF72060-6D54-4297-A54F-D9CE90DD38DA}|BarnManagement\\BarnManagement.csproj|solutionrelative:barnmanagement\\models\\product.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BAF72060-6D54-4297-A54F-D9CE90DD38DA}|BarnManagement\\BarnManagement.csproj|C:\\Users\\beyzy\\source\\repos\\BarnManagement\\barnmanagement\\forms\\loginform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BAF72060-6D54-4297-A54F-D9CE90DD38DA}|BarnManagement\\BarnManagement.csproj|solutionrelative:barnmanagement\\forms\\loginform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BAF72060-6D54-4297-A54F-D9CE90DD38DA}|BarnManagement\\BarnManagement.csproj|c:\\users\\beyzy\\source\\repos\\barnmanagement\\barnmanagement\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BAF72060-6D54-4297-A54F-D9CE90DD38DA}|BarnManagement\\BarnManagement.csproj|solutionrelative:barnmanagement\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BAF72060-6D54-4297-A54F-D9CE90DD38DA}|BarnManagement\\BarnManagement.csproj|c:\\users\\beyzy\\source\\repos\\barnmanagement\\barnmanagement\\models\\animal.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BAF72060-6D54-4297-A54F-D9CE90DD38DA}|BarnManagement\\BarnManagement.csproj|solutionrelative:barnmanagement\\models\\animal.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BAF72060-6D54-4297-A54F-D9CE90DD38DA}|BarnManagement\\BarnManagement.csproj|C:\\Users\\beyzy\\source\\repos\\BarnManagement\\barnmanagement\\forms\\loginform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{BAF72060-6D54-4297-A54F-D9CE90DD38DA}|BarnManagement\\BarnManagement.csproj|solutionrelative:barnmanagement\\forms\\loginform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BAF72060-6D54-4297-A54F-D9CE90DD38DA}|BarnManagement\\BarnManagement.csproj|C:\\Users\\beyzy\\source\\repos\\BarnManagement\\barnmanagement\\forms\\registerform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{BAF72060-6D54-4297-A54F-D9CE90DD38DA}|BarnManagement\\BarnManagement.csproj|solutionrelative:barnmanagement\\forms\\registerform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BAF72060-6D54-4297-A54F-D9CE90DD38DA}|BarnManagement\\BarnManagement.csproj|C:\\Users\\beyzy\\source\\repos\\BarnManagement\\barnmanagement\\forms\\registerform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BAF72060-6D54-4297-A54F-D9CE90DD38DA}|BarnManagement\\BarnManagement.csproj|solutionrelative:barnmanagement\\forms\\registerform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -14,18 +66,184 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 7,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "Form1.cs [Design]",
-              "DocumentMoniker": "C:\\Users\\beyzy\\source\\repos\\BarnManagement\\BarnManagement\\Form1.cs",
-              "RelativeDocumentMoniker": "BarnManagement\\Form1.cs",
-              "ToolTip": "C:\\Users\\beyzy\\source\\repos\\BarnManagement\\BarnManagement\\Form1.cs [Design]",
-              "RelativeToolTip": "BarnManagement\\Form1.cs [Design]",
+              "DocumentIndex": 10,
+              "Title": "Animal.cs",
+              "DocumentMoniker": "C:\\Users\\beyzy\\source\\repos\\BarnManagement\\BarnManagement\\Models\\Animal.cs",
+              "RelativeDocumentMoniker": "BarnManagement\\Models\\Animal.cs",
+              "ToolTip": "C:\\Users\\beyzy\\source\\repos\\BarnManagement\\BarnManagement\\Models\\Animal.cs",
+              "RelativeToolTip": "BarnManagement\\Models\\Animal.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA0AAAAoAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-08-26T07:24:58.494Z",
+              "WhenOpened": "2025-08-27T06:41:02.808Z",
+              "IsPinned": true,
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "Cow.cs",
+              "DocumentMoniker": "C:\\Users\\beyzy\\source\\repos\\BarnManagement\\BarnManagement\\Models\\Cow.cs",
+              "RelativeDocumentMoniker": "BarnManagement\\Models\\Cow.cs",
+              "ToolTip": "C:\\Users\\beyzy\\source\\repos\\BarnManagement\\BarnManagement\\Models\\Cow.cs",
+              "RelativeToolTip": "BarnManagement\\Models\\Cow.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAgAAAAdAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-27T08:12:26.021Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "MainForm.cs",
+              "DocumentMoniker": "C:\\Users\\beyzy\\source\\repos\\BarnManagement\\BarnManagement\\Forms\\MainForm.cs",
+              "RelativeDocumentMoniker": "BarnManagement\\Forms\\MainForm.cs",
+              "ToolTip": "C:\\Users\\beyzy\\source\\repos\\BarnManagement\\BarnManagement\\Forms\\MainForm.cs",
+              "RelativeToolTip": "BarnManagement\\Forms\\MainForm.cs",
+              "ViewState": "AQIAAAMAAAAAAAAAAAAAAA8AAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-27T07:09:23.732Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "Product.cs",
+              "DocumentMoniker": "C:\\Users\\beyzy\\source\\repos\\BarnManagement\\BarnManagement\\Models\\Product.cs",
+              "RelativeDocumentMoniker": "BarnManagement\\Models\\Product.cs",
+              "ToolTip": "C:\\Users\\beyzy\\source\\repos\\BarnManagement\\BarnManagement\\Models\\Product.cs",
+              "RelativeToolTip": "BarnManagement\\Models\\Product.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABAAAAAyAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-27T06:57:49.769Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "MainForm.cs [Design]",
+              "DocumentMoniker": "C:\\Users\\beyzy\\source\\repos\\BarnManagement\\BarnManagement\\Forms\\MainForm.cs",
+              "RelativeDocumentMoniker": "BarnManagement\\Forms\\MainForm.cs",
+              "ToolTip": "C:\\Users\\beyzy\\source\\repos\\BarnManagement\\BarnManagement\\Forms\\MainForm.cs [Design]",
+              "RelativeToolTip": "BarnManagement\\Forms\\MainForm.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-27T06:54:32.869Z",
+              "EditorCaption": " [Design]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\beyzy\\source\\repos\\BarnManagement\\BarnManagement\\Program.cs",
+              "RelativeDocumentMoniker": "BarnManagement\\Program.cs",
+              "ToolTip": "C:\\Users\\beyzy\\source\\repos\\BarnManagement\\BarnManagement\\Program.cs",
+              "RelativeToolTip": "BarnManagement\\Program.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAUAAAAbAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-27T06:54:01.814Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "BarnContext.cs",
+              "DocumentMoniker": "C:\\Users\\beyzy\\source\\repos\\BarnManagement\\BarnManagement\\Data\\BarnContext.cs",
+              "RelativeDocumentMoniker": "BarnManagement\\Data\\BarnContext.cs",
+              "ToolTip": "C:\\Users\\beyzy\\source\\repos\\BarnManagement\\BarnManagement\\Data\\BarnContext.cs",
+              "RelativeToolTip": "BarnManagement\\Data\\BarnContext.cs",
+              "ViewState": "AQIAAAkAAAAAAAAAAAAAABQAAABMAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-27T06:40:57.294Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "MainForm.Designer.cs",
+              "DocumentMoniker": "C:\\Users\\beyzy\\source\\repos\\BarnManagement\\BarnManagement\\Forms\\MainForm.Designer.cs",
+              "RelativeDocumentMoniker": "BarnManagement\\Forms\\MainForm.Designer.cs",
+              "ToolTip": "C:\\Users\\beyzy\\source\\repos\\BarnManagement\\BarnManagement\\Forms\\MainForm.Designer.cs",
+              "RelativeToolTip": "BarnManagement\\Forms\\MainForm.Designer.cs",
+              "ViewState": "AQIAAM8AAAAAAAAAAAAowOkAAAAcAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-27T07:25:07.3Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "Chicken.cs",
+              "DocumentMoniker": "C:\\Users\\beyzy\\source\\repos\\BarnManagement\\BarnManagement\\Models\\Chicken.cs",
+              "RelativeDocumentMoniker": "BarnManagement\\Models\\Chicken.cs",
+              "ToolTip": "C:\\Users\\beyzy\\source\\repos\\BarnManagement\\BarnManagement\\Models\\Chicken.cs",
+              "RelativeToolTip": "BarnManagement\\Models\\Chicken.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAgAAAAhAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-27T08:13:02.706Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "Sheep.cs",
+              "DocumentMoniker": "C:\\Users\\beyzy\\source\\repos\\BarnManagement\\BarnManagement\\Models\\Sheep.cs",
+              "RelativeDocumentMoniker": "BarnManagement\\Models\\Sheep.cs",
+              "ToolTip": "C:\\Users\\beyzy\\source\\repos\\BarnManagement\\BarnManagement\\Models\\Sheep.cs",
+              "RelativeToolTip": "BarnManagement\\Models\\Sheep.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABoAAAAFAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-27T08:15:34.124Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "RegisterForm.cs",
+              "DocumentMoniker": "C:\\Users\\beyzy\\source\\repos\\BarnManagement\\BarnManagement\\Forms\\RegisterForm.cs",
+              "RelativeDocumentMoniker": "BarnManagement\\Forms\\RegisterForm.cs",
+              "ToolTip": "C:\\Users\\beyzy\\source\\repos\\BarnManagement\\BarnManagement\\Forms\\RegisterForm.cs",
+              "RelativeToolTip": "BarnManagement\\Forms\\RegisterForm.cs",
+              "ViewState": "AQIAAAMAAAAAAAAAAAAAABEAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-26T10:33:41.442Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "LoginForm.cs",
+              "DocumentMoniker": "C:\\Users\\beyzy\\source\\repos\\BarnManagement\\BarnManagement\\Forms\\LoginForm.cs",
+              "RelativeDocumentMoniker": "BarnManagement\\Forms\\LoginForm.cs",
+              "ToolTip": "C:\\Users\\beyzy\\source\\repos\\BarnManagement\\BarnManagement\\Forms\\LoginForm.cs",
+              "RelativeToolTip": "BarnManagement\\Forms\\LoginForm.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAE4AAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-26T10:46:39.983Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "RegisterForm.cs [Design]",
+              "DocumentMoniker": "C:\\Users\\beyzy\\source\\repos\\BarnManagement\\BarnManagement\\Forms\\RegisterForm.cs",
+              "RelativeDocumentMoniker": "BarnManagement\\Forms\\RegisterForm.cs",
+              "ToolTip": "C:\\Users\\beyzy\\source\\repos\\BarnManagement\\BarnManagement\\Forms\\RegisterForm.cs [Design]",
+              "RelativeToolTip": "BarnManagement\\Forms\\RegisterForm.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-26T10:29:03.865Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "LoginForm.cs [Design]",
+              "DocumentMoniker": "C:\\Users\\beyzy\\source\\repos\\BarnManagement\\BarnManagement\\Forms\\LoginForm.cs",
+              "RelativeDocumentMoniker": "BarnManagement\\Forms\\LoginForm.cs",
+              "ToolTip": "C:\\Users\\beyzy\\source\\repos\\BarnManagement\\BarnManagement\\Forms\\LoginForm.cs [Design]",
+              "RelativeToolTip": "BarnManagement\\Forms\\LoginForm.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-26T10:28:47.584Z",
               "EditorCaption": " [Design]"
             }
           ]
