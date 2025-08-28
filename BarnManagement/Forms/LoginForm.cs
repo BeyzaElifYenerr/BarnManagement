@@ -1,19 +1,21 @@
 ﻿using System;
 using System.Linq;
 using System.Windows.Forms;
-using BarnManagement.Data;        
-using BarnManagement.Models;      
-using BarnManagement.Security;    
+using BarnManagement.Data;
+using BarnManagement.Models;
+using BarnManagement.Security;
+using BarnManagement.Auth;   
 
 namespace BarnManagement.Forms
 {
     public partial class LoginForm : Form
     {
+        private const decimal START_BALANCE = 1000m; 
+
         public LoginForm()
         {
             InitializeComponent();
 
-            
             btnLogin.Click += BtnLogin_Click;
             btnGoRegister.Click += (s, e) =>
             {
@@ -25,13 +27,12 @@ namespace BarnManagement.Forms
             this.AcceptButton = btnLogin;
         }
 
-        
         private void LoginForm_Load(object sender, EventArgs e) { }
 
         private void BtnLogin_Click(object sender, EventArgs e)
         {
             var username = txtUsername.Text?.Trim();
-            var pass = txtPassword.Text;
+            var pass = txtPassword.Text ?? string.Empty;
 
             if (string.IsNullOrWhiteSpace(username) || string.IsNullOrWhiteSpace(pass))
             {
@@ -55,6 +56,23 @@ namespace BarnManagement.Forms
                     {
                         MessageBox.Show("Şifre hatalı");
                         return;
+                    }
+
+                    
+                    AuthContext.SignIn(user.Id);
+
+                    
+                    var userBarn = db.Barns.FirstOrDefault(b => b.OwnerUserId == user.Id);
+                    if (userBarn == null)
+                    {
+                        db.Barns.Add(new Barn
+                        {
+                            OwnerUserId = user.Id,     
+                            Capacity = 50,
+                            CurrentAnimalCount = 0,
+                            Balance = START_BALANCE
+                        });
+                        db.SaveChanges();
                     }
                 }
 

@@ -1,9 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace BarnManagement.Models
 {
@@ -15,6 +11,9 @@ namespace BarnManagement.Models
         public bool IsSold { get; set; } = false;
         public int AnimalId { get; set; }
         public virtual Animal Animal { get; set; }
+
+        public int BarnId { get; set; }
+        public virtual Barn Barn { get; set; }
 
         [Column(TypeName = "datetime2")]
         public DateTime ProducedAt { get; set; } = DateTime.UtcNow;

@@ -64,5 +64,10 @@ namespace BarnManagement.Forms
                 this.Hide();
             }
         }
+
+        private void RegisterForm_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

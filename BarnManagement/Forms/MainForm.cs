@@ -1,26 +1,18 @@
 ﻿using System;
 using System.Linq;
 using System.Windows.Forms;
-using BarnManagement.Data;    
-using BarnManagement.Models;  
+using BarnManagement.Data;
+using BarnManagement.Models;
+using BarnManagement.Auth; 
 
 namespace BarnManagement.Forms
 {
     public partial class MainForm : Form
     {
-        private const decimal START_BALANCE = 1000m; 
-        private readonly int _progressStep = 5;
+        private const decimal START_BALANCE = 1000m;
 
-        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
-            => DataGridView1_CellContentClick(sender, e);
-
-        private void dgyProducts_CellContentClick(object sender, DataGridViewCellEventArgs e)
-            => DgvProducts_CellContentClick(sender, e);
-
-        private void lbBalance_Click(object sender, EventArgs e) {  }
-
-        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e) {  }
-
+        
+        private readonly int _progressStep = 20;
 
         public MainForm()
         {
@@ -31,11 +23,82 @@ namespace BarnManagement.Forms
             btnAddAnimal.Click += BtnAddAnimal_Click;
             btnProduce.Click += BtnProduce_Click;
             timerProduction.Tick += TimerProduction_Tick;
-            btnSell.Click += BtnSell_Click;               
-            btnSellAnimal.Click += BtnSellAnimal_Click;   
+            btnSell.Click += BtnSell_Click;
+            btnSellAnimal.Click += BtnSellAnimal_Click;
+
+            
+            timerProduction.Interval = 1000; 
+        }
+
+      
+        private decimal GetUnitPrice(Enums.ProductType type)
+        {
+            switch (type)
+            {
+                case Enums.ProductType.Milk: return 10m; 
+                case Enums.ProductType.Egg: return 5m;  
+                case Enums.ProductType.Wool: return 60m; 
+                default: return 0m;
+            }
         }
 
         
+        private decimal GetBuyPrice(Enums.Species species)
+        {
+            switch (species)
+            {
+                case Enums.Species.Cow: return 500m;
+                case Enums.Species.Chicken: return 50m;
+                case Enums.Species.Sheep: return 300m;
+                default: return 0m;
+            }
+        }
+
+        
+        private decimal GetAnimalSellPrice(Animal a)
+        {
+            int maxLife =
+                (a is Cow) ? Cow.StaticLifetimeDays :
+                (a is Chicken) ? Chicken.StaticLifetimeDays :
+                (a is Sheep) ? Sheep.StaticLifetimeDays :
+                Animal.DefaultLifetimeDays;
+
+            var buy = GetBuyPrice(a.Species);
+            var ratio = Math.Min((decimal)a.AgeDays / Math.Max(1, maxLife), 1m);
+            var factor = 0.4m + ratio * 0.4m; // 0.4 .. 0.8
+            return Math.Round(buy * factor, 2);
+        }
+
+        
+        private int EnsureAndGetBarnId(BarnContext db)
+        {
+            if (!AuthContext.IsAuthenticated)
+            {
+                MessageBox.Show("Oturum bulunamadı. Lütfen tekrar giriş yapın.");
+                Application.Exit();
+                return 0;
+            }
+
+            int uid = AuthContext.CurrentUserId.Value;
+
+            var barn = db.Barns.FirstOrDefault(b => b.OwnerUserId == uid);
+            if (barn == null)
+            {
+                barn = new Barn
+                {
+                    OwnerUserId = uid,
+                    Capacity = 50,
+                    CurrentAnimalCount = 0,
+                    Balance = START_BALANCE
+                };
+                db.Barns.Add(barn);
+                db.SaveChanges();
+            }
+            return barn.Id;
+        }
+
+      
+
         private void MainForm_Load(object sender, EventArgs e)
         {
             
@@ -47,7 +110,7 @@ namespace BarnManagement.Forms
 
             EnsureBarnExists();
             LoadAnimals();
-            LoadAnimalsForSale();   
+            LoadAnimalsForSale();
             LoadProducts();
             LoadBalance();
 
@@ -65,20 +128,20 @@ namespace BarnManagement.Forms
         {
             using (var db = new BarnContext())
             {
-                if (!db.Barns.Any())
-                {
-                    db.Barns.Add(new Barn { Capacity = 50, CurrentAnimalCount = 0, Balance = START_BALANCE });
-                    db.SaveChanges();
-                }
+                EnsureAndGetBarnId(db); // yeterli
             }
         }
+
+       
 
         private void LoadAnimals()
         {
             using (var db = new BarnContext())
             {
+                int barnId = EnsureAndGetBarnId(db);
+
                 var data = db.Animals
-                    .Where(a => a.IsAlive) 
+                    .Where(a => a.IsAlive && a.BarnId == barnId)
                     .Select(a => new
                     {
                         a.Id,
@@ -91,13 +154,9 @@ namespace BarnManagement.Forms
 
                 dgvAnimals.DataSource = data;
 
-                
-                var barn = db.Barns.FirstOrDefault();
-                if (barn != null)
-                {
-                    barn.CurrentAnimalCount = db.Animals.Count(x => x.IsAlive);
-                    db.SaveChanges();
-                }
+                var barn = db.Barns.First(b => b.Id == barnId);
+                barn.CurrentAnimalCount = db.Animals.Count(x => x.IsAlive && x.BarnId == barnId);
+                db.SaveChanges();
             }
         }
 
@@ -105,8 +164,10 @@ namespace BarnManagement.Forms
         {
             using (var db = new BarnContext())
             {
+                int barnId = EnsureAndGetBarnId(db);
+
                 var list = db.Animals
-                             .Where(a => a.IsAlive)
+                             .Where(a => a.IsAlive && a.BarnId == barnId)
                              .Select(a => new { a.Id, Text = a.Id + " - " + a.Species.ToString() })
                              .ToList();
 
@@ -120,14 +181,20 @@ namespace BarnManagement.Forms
         {
             using (var db = new BarnContext())
             {
+                int barnId = EnsureAndGetBarnId(db);
+
+               
                 var data = db.Products
+                    .Where(p => p.BarnId == barnId)
                     .OrderByDescending(p => p.Id)
+                    .ToList()
                     .Select(p => new
                     {
                         p.Id,
                         Type = p.ProductType.ToString(),
                         p.Quantity,
-                        p.IsSold
+                        p.IsSold,
+                        UnitPrice = GetUnitPrice(p.ProductType)
                     })
                     .ToList();
 
@@ -139,24 +206,14 @@ namespace BarnManagement.Forms
         {
             using (var db = new BarnContext())
             {
-                var bal = db.Barns.Select(b => b.Balance).FirstOrDefault();
+                int barnId = EnsureAndGetBarnId(db);
+                var bal = db.Barns.Where(b => b.Id == barnId).Select(b => b.Balance).FirstOrDefault();
                 lblBalance.Text = $"Bakiye: {bal:0.00}";
             }
         }
 
         
-        private decimal GetBuyPrice(Enums.Species species)
-        {
-            switch (species)
-            {
-                case Enums.Species.Cow: return 500m;
-                case Enums.Species.Chicken: return 50m;
-                case Enums.Species.Sheep: return 300m;
-                default: return 0m;
-            }
-        }
 
-        
         private void BtnAddAnimal_Click(object sender, EventArgs e)
         {
             var species = (Enums.Species)cboSpecies.SelectedItem;
@@ -174,9 +231,10 @@ namespace BarnManagement.Forms
 
             using (var db = new BarnContext())
             {
-                var barn = db.Barns.First();
+                int barnId = EnsureAndGetBarnId(db);
+                var barn = db.Barns.First(b => b.Id == barnId);
 
-                // Bakiye kontrolü
+                
                 var cost = GetBuyPrice(species);
                 if (barn.Balance < cost)
                 {
@@ -191,7 +249,10 @@ namespace BarnManagement.Forms
                     return;
                 }
 
-                barn.Balance -= cost;   
+                
+                a.BarnId = barnId;
+
+                barn.Balance -= cost;
                 db.Animals.Add(a);
                 db.SaveChanges();
             }
@@ -203,7 +264,8 @@ namespace BarnManagement.Forms
             MessageBox.Show("Hayvan eklendi (bakiye güncellendi).");
         }
 
-        
+       
+
         private void BtnProduce_Click(object sender, EventArgs e)
         {
             if (timerProduction.Enabled) return;
@@ -215,10 +277,11 @@ namespace BarnManagement.Forms
         private void TimerProduction_Tick(object sender, EventArgs e)
         {
             prgProduction.Value = Math.Min(100, prgProduction.Value + _progressStep);
+
             if (prgProduction.Value >= 100)
             {
                 timerProduction.Stop();
-                ProduceAll();
+                ProduceAll();            
                 btnProduce.Enabled = true;
                 prgProduction.Value = 0;
             }
@@ -227,21 +290,39 @@ namespace BarnManagement.Forms
         private void ProduceAll()
         {
             int created = 0;
+
             using (var db = new BarnContext())
             {
-                var animals = db.Animals.Where(a => a.IsAlive).ToList();
+                int barnId = EnsureAndGetBarnId(db);
+
+                var animals = db.Animals
+                                .Where(a => a.IsAlive && a.BarnId == barnId)
+                                .ToList();
 
                 foreach (var a in animals)
                 {
+                    
                     int life = (a is Cow) ? Cow.StaticLifetimeDays :
                                (a is Chicken) ? Chicken.StaticLifetimeDays :
-                               (a is Sheep) ? Sheep.StaticLifetimeDays : 3650;
+                               (a is Sheep) ? Sheep.StaticLifetimeDays :
+                               Animal.DefaultLifetimeDays;
 
-                    if (a.AgeDays > life) { a.IsAlive = false; continue; }
+                    if (a.AgeDays > life)
+                    {
+                        a.IsAlive = false;
+                        continue;
+                    }
 
+                    
                     var product = a.ProduceProduct();
-                    if (product != null) { db.Products.Add(product); created++; }
+                    if (product != null)
+                    {
+                        product.BarnId = barnId; 
+                        db.Products.Add(product);
+                        created++;
+                    }
 
+                    
                     a.AgeDays += 1;
                 }
 
@@ -254,7 +335,8 @@ namespace BarnManagement.Forms
             
         }
 
-       
+        
+
         private void BtnSell_Click(object sender, EventArgs e)
         {
             if (dgvProducts.CurrentRow == null)
@@ -264,21 +346,25 @@ namespace BarnManagement.Forms
             }
 
             int productId = Convert.ToInt32(dgvProducts.CurrentRow.Cells["Id"].Value);
-            decimal unitPrice = nudPrice.Value;
-            if (unitPrice <= 0)
-            {
-                MessageBox.Show("Birim fiyat girin.");
-                return;
-            }
 
             using (var db = new BarnContext())
             {
-                var p = db.Products.FirstOrDefault(x => x.Id == productId);
-                if (p == null) { MessageBox.Show("Ürün bulunamadı."); return; }
+                int barnId = EnsureAndGetBarnId(db);
+
+                var p = db.Products.FirstOrDefault(x => x.Id == productId && x.BarnId == barnId);
+                if (p == null) { MessageBox.Show("Ürün bulunamadı veya yetkiniz yok."); return; }
                 if (p.IsSold) { MessageBox.Show("Bu ürün zaten satılmış."); return; }
 
-                var barn = db.Barns.First();
-                barn.Balance += unitPrice * p.Quantity; 
+                
+                var unitPrice = GetUnitPrice(p.ProductType);
+                if (unitPrice <= 0)
+                {
+                    MessageBox.Show("Ürün tipi için fiyat bulunamadı.");
+                    return;
+                }
+
+                var barn = db.Barns.First(b => b.Id == barnId);
+                barn.Balance += unitPrice * p.Quantity;
                 p.IsSold = true;
 
                 db.SaveChanges();
@@ -286,10 +372,11 @@ namespace BarnManagement.Forms
 
             LoadProducts();
             LoadBalance();
-            MessageBox.Show("Ürün satışı gerçekleştirildi.");
+            MessageBox.Show("Ürün satışı gerçekleştirildi (sabit fiyattan).");
         }
 
-        
+      
+
         private void BtnSellAnimal_Click(object sender, EventArgs e)
         {
             if (cboSellAnimal.SelectedValue == null)
@@ -299,21 +386,24 @@ namespace BarnManagement.Forms
             }
 
             int animalId = Convert.ToInt32(cboSellAnimal.SelectedValue);
-            decimal price = nudAnimalPrice.Value;
-            if (price <= 0)
-            {
-                MessageBox.Show("Satış fiyatı girin.");
-                return;
-            }
 
             using (var db = new BarnContext())
             {
-                var a = db.Animals.FirstOrDefault(x => x.Id == animalId && x.IsAlive);
-                if (a == null) { MessageBox.Show("Hayvan bulunamadı veya zaten satılmış/ölü."); return; }
+                int barnId = EnsureAndGetBarnId(db);
 
-                var barn = db.Barns.First();
-                barn.Balance += price;   
-                a.IsAlive = false;       
+                var a = db.Animals.FirstOrDefault(x => x.Id == animalId && x.IsAlive && x.BarnId == barnId);
+                if (a == null)
+                {
+                    MessageBox.Show("Hayvan bulunamadı veya yetkiniz yok.");
+                    return;
+                }
+
+                
+                var price = GetAnimalSellPrice(a);
+
+                var barn = db.Barns.First(b => b.Id == barnId);
+                barn.Balance += price;
+                a.IsAlive = false;
 
                 db.SaveChanges();
             }
@@ -321,26 +411,27 @@ namespace BarnManagement.Forms
             LoadAnimals();
             LoadAnimalsForSale();
             LoadBalance();
-            MessageBox.Show("Hayvan satışı gerçekleştirildi.");
+            MessageBox.Show("Hayvan satışı gerçekleştirildi (sabit fiyattan).");
         }
 
-        
+       
+
         private void DataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             if (sender is DataGridView grid && e.RowIndex >= 0)
                 grid.Rows[e.RowIndex].Selected = true;
         }
 
-      
         private void DgvProducts_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex >= 0)
                 dgvProducts.Rows[e.RowIndex].Selected = true;
         }
 
-        private void MainForm_Load_1(object sender, EventArgs e)
-        {
-
-        }
+        
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e) { }
+        private void MainForm_Load_1(object sender, EventArgs e) { }
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e) => DataGridView1_CellContentClick(sender, e);
+        private void dgyProducts_CellContentClick(object sender, DataGridViewCellEventArgs e) => DgvProducts_CellContentClick(sender, e);
     }
 }

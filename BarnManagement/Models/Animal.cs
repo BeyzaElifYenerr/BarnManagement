@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace BarnManagement.Models
 {
@@ -15,6 +11,8 @@ namespace BarnManagement.Models
         public bool IsAlive { get; set; } = true;
         public abstract int LifetimeDays { get; }
 
+        public int BarnId { get; set; }
+        public virtual Barn Barn { get; set; }
 
         public static int DefaultLifetimeDays = 3650; 
 

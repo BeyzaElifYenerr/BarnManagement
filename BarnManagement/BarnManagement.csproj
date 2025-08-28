@@ -56,6 +56,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Auth\AuthContext.cs" />
     <Compile Include="Data\BarnContext.cs" />
     <Compile Include="Forms\LoginForm.cs">
       <SubType>Form</SubType>
@@ -82,6 +83,14 @@
     <Compile Include="Migrations\202508270817235_UseDateTime2_AndProductProducedAt.cs" />
     <Compile Include="Migrations\202508270817235_UseDateTime2_AndProductProducedAt.Designer.cs">
       <DependentUpon>202508270817235_UseDateTime2_AndProductProducedAt.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202508281049216_MultiTenantBarn.cs" />
+    <Compile Include="Migrations\202508281049216_MultiTenantBarn.Designer.cs">
+      <DependentUpon>202508281049216_MultiTenantBarn.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202508281119031_SyncModelToDb.cs" />
+    <Compile Include="Migrations\202508281119031_SyncModelToDb.Designer.cs">
+      <DependentUpon>202508281119031_SyncModelToDb.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Animal.cs" />
@@ -110,6 +119,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202508270817235_UseDateTime2_AndProductProducedAt.resx">
       <DependentUpon>202508270817235_UseDateTime2_AndProductProducedAt.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202508281049216_MultiTenantBarn.resx">
+      <DependentUpon>202508281049216_MultiTenantBarn.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202508281119031_SyncModelToDb.resx">
+      <DependentUpon>202508281119031_SyncModelToDb.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

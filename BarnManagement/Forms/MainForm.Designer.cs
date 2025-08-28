@@ -188,6 +188,7 @@
             // nudPrice
             // 
             this.nudPrice.DecimalPlaces = 2;
+            this.nudPrice.Enabled = false;
             this.nudPrice.Location = new System.Drawing.Point(6, 19);
             this.nudPrice.Maximum = new decimal(new int[] {
             100000,
@@ -229,6 +230,7 @@
             // nudAnimalPrice
             // 
             this.nudAnimalPrice.DecimalPlaces = 2;
+            this.nudAnimalPrice.Enabled = false;
             this.nudAnimalPrice.Location = new System.Drawing.Point(6, 46);
             this.nudAnimalPrice.Maximum = new decimal(new int[] {
             100000,

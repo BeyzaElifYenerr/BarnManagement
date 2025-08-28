@@ -1,23 +1,19 @@
-﻿namespace BarnManagement.Migrations
-{
-    using System;
-    using System.Data.Entity;
-    using System.Data.Entity.Migrations;
-    using System.Linq;
+﻿using System;
+using System.Data.Entity.Migrations;
+using BarnManagement.Data;
 
-    internal sealed class Configuration : DbMigrationsConfiguration<BarnManagement.Data.BarnContext>
+namespace BarnManagement.Migrations
+{
+    internal sealed class Configuration : DbMigrationsConfiguration<BarnContext>
     {
         public Configuration()
         {
             AutomaticMigrationsEnabled = false;
         }
 
-        protected override void Seed(BarnManagement.Data.BarnContext context)
+        protected override void Seed(BarnContext context)
         {
-            //  This method will be called after migrating to the latest version.
-
-            //  You can use the DbSet<T>.AddOrUpdate() helper extension method
-            //  to avoid creating duplicate seed data.
+            
         }
     }
 }
